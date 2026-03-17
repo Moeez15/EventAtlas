@@ -36,6 +36,14 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
+<div>
+    <a href="https://www.loom.com/share/09a7cb7a85854426baabf4a4600932e6">
+      <p>Videos | Library | Loom - 16 March 2026 - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/09a7cb7a85854426baabf4a4600932e6">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/09a7cb7a85854426baabf4a4600932e6-8e47a904f27834f0-full-play.gif#t=0.1">
+    </a>
+  </div>
 
 
 ## Notes
