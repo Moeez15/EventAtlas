@@ -37,3 +37,9 @@
 .location-events main i {
     margin-right: 10px;
 }
+
+.events-filter {
+    display: flex;
+    justify-content: center;
+    padding: 20px 30px 0px 30px;
+}

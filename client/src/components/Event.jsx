@@ -1,47 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import EventsAPI from '../services/EventsAPI'
+import dates from '../services/dates'
 import '../css/Event.css'
 
 const Event = (props) => {
 
-    const [event, setEvent] = useState([])
-    const [time, setTime] = useState([])
-    const [remaining, setRemaining] = useState([])
+    const [event, setEvent] = useState({})
+    const [time, setTime] = useState('')
+    const [remaining, setRemaining] = useState('')
 
     useEffect(() => {
         (async () => {
             try {
-                const eventData = await EventsAPI.getEventsById(props.id)
+                const eventData = await EventsAPI.getEventById(props.id)
                 setEvent(eventData)
             }
             catch (error) {
                 throw error
             }
         }) ()
-    }, [])
+    }, [props.id])
 
     useEffect(() => {
-        (async () => {
-            try {
-                const result = await dates.formatTime(event.time)
-                setTime(result)
-            }
-            catch (error) {
-                throw error
-            }
-        }) ()
+        if (!event.time) return
+        try {
+            const result = dates.formatTime(event.time)
+            setTime(result)
+        }
+        catch (error) {
+            throw error
+        }
     }, [event])
 
     useEffect(() => {
-        (async () => {
-            try {
-                const timeRemaining = await dates.formatRemainingTime(event.remaining)
-                setRemaining(timeRemaining)
-                dates.formatNegativeTimeRemaining(remaining, event.id)
-            }
-            catch (error) {
-                throw error
-            }
-        }) ()
+        if (event.remaining === undefined || event.remaining === null) return
+        try {
+            const timeRemaining = dates.formatRemainingTime(event.remaining)
+            setRemaining(timeRemaining)
+            dates.formatNegativeTimeRemaining(timeRemaining, event.id)
+        }
+        catch (error) {
+            throw error
+        }
     }, [event])
 
     return (
